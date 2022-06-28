@@ -1,4 +1,5 @@
 //go:build linux
+// +build linux
 
 package main
 
@@ -35,7 +36,5 @@ func createUTS() {
 	} else {
 		fmt.Printf(os.Hostname())
 	}
-
-	fmt.Printf(os.Hostname())
 
 }
