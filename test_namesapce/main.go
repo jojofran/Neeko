@@ -1,4 +1,5 @@
-// +build linux
+//go:build linux
+
 package main
 
 import (
@@ -24,7 +25,8 @@ func createUTS() {
 
 	// ProcAttr holds the attributes that will be applied to a new process started by StartProcess.
 	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags: syscall.CLONE_NEWUTS,
+		Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID | syscall.CLONE_NEWIPC | syscall.
+			CLONE_NEWNET | syscall.CLONE_NEWNS | syscall.CLONE_NEWUSER,
 	}
 
 	if err := cmd.Run(); err != nil {
